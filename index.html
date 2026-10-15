@@ -149,6 +149,10 @@
       .contact-btn:hover {
         background: #ff7f50;
       }
+      button { 
+      font-size: 18px; padding: 12px 24px; cursor: pointer;
+      border: none; border-radius: 8px; background: #4a90d9; color: white;
+       }
     </style>
   </head>
 
@@ -165,6 +169,7 @@
       <div class="header">
         <h1>欢迎来到村村的世界</h1>
         <p>每天坚持学习一点，轻舟总会翻过万重山</p>
+        <button onclick="打气()">🚀 给自己打气</button>
       </div>
 
       <!-- ③ 个人简介 -->
@@ -262,6 +267,9 @@
 
     <script>
       document.getElementById("year").textContent = new Date().getFullYear();
+      function 打气() {
+         alert("每天坚持学习一点，轻舟总会翻过万重山！");
+      }
     </script>
   </body>
 </html>

@@ -269,10 +269,25 @@
     <script>
       document.getElementById("year").textContent = new Date().getFullYear();
     </script>
-    <script>
+  <script>
 function 打气() {
-  document.getElementById("加油语").innerHTML =
-    "虚心使人进步，骄傲使人落后！<br>村村，今天又前进一天！💪";
+  // 一个"抽屉"，里面装了好几条鼓励你的话
+  var 文案 = [
+    "惊叹号是勇士滴在攀登路上的血，也是懦夫失望时流淌的泪。",
+    "忘掉失败，不过要牢记失败中的教训。",
+    "村村，今天又前进了一天！",
+    "再小的坚持，也算数。",
+    "没有人做不好的事，只有做不好事的人。",
+    "人生之道往往是坷坎的。",
+    "拼尽全力，逼自己优秀一把，青春已所剩不多。",
+    "如果你不想做，你可以找一个理由，如果你肯做，你也可以自已找一个方法。",
+    "靠自己，再长的路，一步步也能走完，再短的路，不迈开双脚也无法到达。",
+    "日益努力而后风生水起，众生皆苦不能认输。"
+  ];
+  // 随机挑一条（Math.random 随机数 × 抽屉长度）
+  var 选中的 = 文案[Math.floor(Math.random() * 文案.length)];
+  // 写进页面 + 上色
+  document.getElementById("加油语").innerHTML = 选中的 + " 💪";
   document.getElementById("加油语").style.color = "#4a90d9";
   document.getElementById("加油语").style.fontSize = "20px";
   document.getElementById("加油语").style.fontWeight = "bold";

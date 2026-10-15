@@ -153,6 +153,20 @@
       font-size: 18px; padding: 12px 24px; cursor: pointer;
       border: none; border-radius: 8px; background: #4a90d9; color: white;
        }
+      #成就提示 {
+  position: fixed;          /* 固定在屏幕 */
+  bottom: 30px; right: 30px;/* 右下角 */
+  background: #fff;  
+  border-left: 5px solid #ffb020;  /* 黄色左杆，像游戏成就*/
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  padding: 16px 20px;
+  border-radius: 10px;
+  opacity: 0;               /* 默认透明(看不见) */
+  transform: translateX(50px);
+  transition: 0.5s;         /* 滑出的动画感 */
+  z-index: 100;
+      }
+#成就提示.show { opacity: 1; transform: translateX(0); }  /* 加上.show就显示 */
     </style>
   </head>
 
@@ -265,7 +279,7 @@
       <!-- ⑦ 页脚 -->
       <div class="footer">© <span id="year">2026</span> 村村的世界</div>
     </div>
-
+    <div id="成就提示"></div>  
     <script>
       document.getElementById("year").textContent = new Date().getFullYear();
     </script>
@@ -292,6 +306,24 @@ function 打气() {
   document.getElementById("加油语").style.fontSize = "20px";
   document.getElementById("加油语").style.fontWeight = "bold";
 }
+    var 成就 = [
+  "成功让网页弹出第一句话",
+  "给标题做了渐变字",
+  "学会了往页面写内容",
+  "学会了随机数",
+  "学会了定时器"
+];
+var index = 0;
+function 弹成就() {
+  var 提示 = document.getElementById("成就提示");
+  提示.innerHTML = "🏆 成就解锁：" + 成就[index];
+  提示.classList.add("show");
+  setTimeout(function(){ 提示.classList.remove("show"); }, 2000); //2秒后收进
+  index++;
+  if (index >= 成就.length) { index = 0; } // 播完再从头来
+}
+setTimeout(弹成就, 1500);       // 1.5秒后第一次
+setInterval(弹成就, 4000);       // 之后每4秒一次
 </script>
   </body>
 </html>

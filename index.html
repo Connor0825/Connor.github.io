@@ -275,6 +275,15 @@
         </ul>
       </div>
 
+      <!-- 猜数字小游戏 -->
+      <div class="section" id="game">
+      <h2>🎯 猜数字</h2>
+      <p>我心里藏了一个 1~100 的数字，来猜猜看！</p>
+      <input id="guess" type="number" placeholder="输入你的猜测" />
+      <button onclick="猜()">猜！</button>
+      <p id="结果"></p>
+      </div>
+
       <!-- ⑥ 联系方式 -->
       <div class="section" id="contact">
         <h2>联系方式</h2>
@@ -286,14 +295,6 @@
       <!-- ⑦ 页脚 -->
       <div class="footer">© <span id="year">2026</span> 村村的世界</div>
       <div id="成就提示"></div>  
-      <!-- 猜数字小游戏 -->
-      <div class="section" id="game">
-      <h2>🎯 猜数字</h2>
-      <p>我心里藏了一个 1~100 的数字，来猜猜看！</p>
-      <input id="guess" type="number" placeholder="输入你的猜测" />
-      <button onclick="猜()">猜！</button>
-      <p id="结果"></p>
-      </div>
     </div>
     <script>
       document.getElementById("year").textContent = new Date().getFullYear();

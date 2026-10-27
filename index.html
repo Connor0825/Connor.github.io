@@ -340,10 +340,8 @@ function 弹成就() {
 }
 setTimeout(弹成就, 1500);       // 1.5秒后第一次
 setInterval(弹成就, 4000);       // 之后每4秒一次
-    <script>
   var 秘密数字 = Math.floor(Math.random() * 100) + 1; // 出生时就随机定好目标
   var 次数 = 0;
-
   function 猜() {
     var 输入值 = document.getElementById("guess").value;   // 读输入框
     var 猜的数字 = Number(输入值);                          // 转成数字
@@ -363,7 +361,6 @@ setInterval(弹成就, 4000);       // 之后每4秒一次
       结果盒.innerHTML = "🎉 恭喜你，第" + 次数 + "次就猜对了！";
     }
   }
-</script>
 </script>
   </body>
 </html>

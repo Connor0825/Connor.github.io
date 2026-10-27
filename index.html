@@ -344,31 +344,31 @@ function 弹成就() {
   setInterval(弹成就, 4000);       // 之后每4秒一次
   
     //猜数字！！
-  var 秘密数字 = Math.floor(Math.random() * 100) + 1;// 出生时就随机定好目标
-  var 次数 = 0;
-  function 猜() {
-    var 输入值 = document.getElementById("guess").value;   // 读输入框
-    if (输入值 === "") {                 // 如果输入框是空的
-        结果盒.innerHTML = "你还没输入数字呢！";
-    return;                            // 直接结束，不走后面
-    }
-    var 猜的数字 = Number(输入值);                          // 转成数字
-    var 结果盒 = document.getElementById("结果");           // 找到结果盒子
+function 猜() {
+  var 结果盒 = document.getElementById("结果");   // 开头就定好结果盒（挪到最前）
+  var 输入值 = document.getElementById("guess").value;
 
-    if (isNaN(猜的数字)) {           // 没输入数字
-      结果盒.innerHTML = "请输入一个数字呀！";
-      return;                        // 直接结束，不往下
-    }
-    次数 = 次数 + 1;                 // 猜的次数加一
-
-    if (猜的数字 > 秘密数字) {        // 猜大了
-      结果盒.innerHTML = "⬆ 太大了！第" + 次数 + "次";
-    } else if (猜的数字 < 秘密数字) { // 猜小了
-      结果盒.innerHTML = "⬇ 太小了！第" + 次数 + "次";
-    } else {                         // 猜对了
-      结果盒.innerHTML = "🎉 恭喜你，第" + 次数 + "次就猜对了！";
-    }
+  if (输入值 === "") {                 // 空输入
+    结果盒.innerHTML = "你还没输入数字呢！";
+    return;
   }
+
+  var 猜的数字 = Number(输入值);
+
+  if (isNaN(猜的数字)) {
+    结果盒.innerHTML = "请输入一个数字呀！";
+    return;
+  }
+  次数 = 次数 + 1;
+
+  if (猜的数字 > 秘密数字) {
+    结果盒.innerHTML = "⬆ 太大了！第" + 次数 + "次";
+  } else if (猜的数字 < 秘密数字) {
+    结果盒.innerHTML = "⬇ 太小了！第" + 次数 + "次";
+  } else {
+    结果盒.innerHTML = "🎉 恭喜你，第" + 次数 + "次就猜对了！";
+  }
+}
 </script>
   </body>
 </html>

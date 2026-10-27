@@ -340,7 +340,8 @@ function 弹成就() {
 }
 setTimeout(弹成就, 1500);       // 1.5秒后第一次
 setInterval(弹成就, 4000);       // 之后每4秒一次
-  var 秘密数字 = Math.floor(Math.random() * 100) + 1; // 出生时就随机定好目标
+  var 秘密数字 = Math.floor(Math.random() * 100) + 1;// 出生时就随机定好目标
+  alert("本次的秘密数字是：15" + 秘密数字);
   var 次数 = 0;
   function 猜() {
     var 输入值 = document.getElementById("guess").value;   // 读输入框

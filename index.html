@@ -154,21 +154,28 @@
       border: none; border-radius: 8px; background: #4a90d9; color: white;
        }
       #成就提示 {
-  position: fixed;          /* 固定在屏幕 */
-  bottom: 30px; right: 30px;/* 右下角 */
-  background: #fff;  
-  border-left: 5px solid #ffb020;  /* 黄色左杆，像游戏成就*/
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-  padding: 16px 20px;
-  border-radius: 10px;
-  opacity: 0;               /* 默认透明(看不见) */
-  transform: translateX(50px);
-  transition: 0.5s;         /* 滑出的动画感 */
-  z-index: 100;
+      position: fixed;          /* 固定在屏幕 */
+      bottom: 30px; right: 30px;/* 右下角 */
+      background: #fff;  
+      border-left: 5px solid #ffb020;  /* 黄色左杆，像游戏成就*/
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      padding: 16px 20px;
+      border-radius: 10px;
+      opacity: 0;               /* 默认透明(看不见) */
+      transform: translateX(50px);
+      transition: 0.5s;         /* 滑出的动画感 */
+      z-index: 100;
       }
-#成就提示.show { opacity: 1; transform: translateX(0); }  /* 加上.show就显示 */
+#成就提示.show { 
+      opacity: 1; 
+      transform: translateX(0); }  /* 加上.show就显示 */
+  #guess { 
+       padding: 10px; 
+       font-size:18px; 
+       width:150px; 
+       margin-right:10px; }
     </style>
-  </head>
+ </head>
 
   <body>
     <div class="container">
@@ -278,8 +285,16 @@
 
       <!-- ⑦ 页脚 -->
       <div class="footer">© <span id="year">2026</span> 村村的世界</div>
+      <div id="成就提示"></div>  
+      <!-- 猜数字小游戏 -->
+      <div class="section" id="game">
+      <h2>🎯 猜数字</h2>
+      <p>我心里藏了一个 1~100 的数字，来猜猜看！</p>
+      <input id="guess" type="number" placeholder="输入你的猜测" />
+      <button onclick="猜()">猜！</button>
+      <p id="结果"></p>
+      </div>
     </div>
-    <div id="成就提示"></div>  
     <script>
       document.getElementById("year").textContent = new Date().getFullYear();
     </script>
@@ -325,6 +340,30 @@ function 弹成就() {
 }
 setTimeout(弹成就, 1500);       // 1.5秒后第一次
 setInterval(弹成就, 4000);       // 之后每4秒一次
+    <script>
+  var 秘密数字 = Math.floor(Math.random() * 100) + 1; // 出生时就随机定好目标
+  var 次数 = 0;
+
+  function 猜() {
+    var 输入值 = document.getElementById("guess").value;   // 读输入框
+    var 猜的数字 = Number(输入值);                          // 转成数字
+    var 结果盒 = document.getElementById("结果");           // 找到结果盒子
+
+    if (isNaN(猜的数字)) {           // 没输入数字
+      结果盒.innerHTML = "28！";
+      return;                        // 直接结束，不往下
+    }
+    次数 = 次数 + 1;                 // 猜的次数加一
+
+    if (猜的数字 > 秘密数字) {        // 猜大了
+      结果盒.innerHTML = "⬆ 太大了！第" + 次数 + "次";
+    } else if (猜的数字 < 秘密数字) { // 猜小了
+      结果盒.innerHTML = "⬇ 太小了！第" + 次数 + "次";
+    } else {                         // 猜对了
+      结果盒.innerHTML = "🎉 恭喜你，第" + 次数 + "次就猜对了！";
+    }
+  }
+</script>
 </script>
   </body>
 </html>

@@ -299,8 +299,10 @@
       document.getElementById("year").textContent = new Date().getFullYear();
     </script>
   <script>
+    
+    //成就框！！
 function 打气() {
-  // 一个"抽屉"，里面装了好几条鼓励你的话
+    // 一个"抽屉"，里面装了好几条鼓励你的话
   var 文案 = [
     "惊叹号是勇士滴在攀登路上的血，也是懦夫失望时流淌的泪。",
     "忘掉失败，不过要牢记失败中的教训。",
@@ -337,9 +339,11 @@ function 弹成就() {
   setTimeout(function(){ 提示.classList.remove("show"); }, 2000); //2秒后收进
   index++;
   if (index >= 成就.length) { index = 0; } // 播完再从头来
-}
-setTimeout(弹成就, 1500);       // 1.5秒后第一次
-setInterval(弹成就, 4000);       // 之后每4秒一次
+  }
+  setTimeout(弹成就, 1500);       // 1.5秒后第一次
+  setInterval(弹成就, 4000);       // 之后每4秒一次
+  
+    //猜数字！！
   var 秘密数字 = Math.floor(Math.random() * 100) + 1;// 出生时就随机定好目标
   var 次数 = 0;
   function 猜() {

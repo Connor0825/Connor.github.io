@@ -344,6 +344,8 @@ function 弹成就() {
   setInterval(弹成就, 4000);       // 之后每4秒一次
   
     //猜数字！！
+  var 秘密数字 = Math.floor(Math.random() * 100) + 1; // 秘密数字，刷新时随机
+  var 次数 = 0;                                       // 猜的次数，从0开始
 function 猜() {
   var 结果盒 = document.getElementById("结果");   // 开头就定好结果盒（挪到最前）
   var 输入值 = document.getElementById("guess").value;

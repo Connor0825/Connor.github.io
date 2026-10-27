@@ -348,6 +348,10 @@ function 弹成就() {
   var 次数 = 0;
   function 猜() {
     var 输入值 = document.getElementById("guess").value;   // 读输入框
+    if (输入值 === "") {                 // 如果输入框是空的
+        结果盒.innerHTML = "你还没输入数字呢！";
+    return;                            // 直接结束，不走后面
+    }
     var 猜的数字 = Number(输入值);                          // 转成数字
     var 结果盒 = document.getElementById("结果");           // 找到结果盒子
 

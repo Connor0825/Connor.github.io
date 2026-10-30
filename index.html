@@ -372,17 +372,18 @@ function 猜() {
   }
   次数 = 次数 + 1;
 
-  if (猜的数字 > 秘密数字) {
-    结果盒.innerHTML = "⬆ 太大了！第" + 次数 + "次";} 
-  else if (猜的数字 < 秘密数字) {
-    结果盒.innerHTML = "⬇ 太小了！第" + 次数 + "次";} 
-  else {
+   if (猜的数字 > 秘密数字) {
+    结果盒.innerHTML = "⬆ 太大了！第" + 次数 + "次";
+  } else if (猜的数字 < 秘密数字) {
+    结果盒.innerHTML = "⬇ 太小了！第" + 次数 + "次";
+  } else {
     结果盒.innerHTML = "🎉 恭喜你，第" + 次数 + "次就猜对了！";
-  }
-   if (最少次数 === 0 || 次数 < 最少次数) {
+
+    if (最少次数 === 0 || 次数 < 最少次数) {
       最少次数 = 次数;
       document.getElementById("最佳记录").innerHTML = "🏅 最佳记录：" + 最少次数 + " 次";
-      localStorage.setItem("最佳次数", 最少次数);   // 存进抽屉
+      localStorage.setItem("最佳次数", 最少次数);
+    }
   }
 }
   function 重新开始() {

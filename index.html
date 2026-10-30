@@ -281,6 +281,7 @@
       <input id="guess" type="number" placeholder="输入你的猜测" />
       <button onclick="猜()">猜！</button>
       <p id="结果"></p>
+      <p id="最佳记录">🏅 最佳记录：还没开始</p>
       <button onclick="重新开始()">🔄 再玩一次</button>
       </div>
 
@@ -346,7 +347,8 @@ function 弹成就() {
   
     //猜数字！！
   var 秘密数字 = Math.floor(Math.random() * 100) + 1; // 秘密数字，刷新时随机
-  var 次数 = 0;                                       // 猜的次数，从0开始
+  var 次数 = 0;   // 猜的次数，从0开始
+  var 最少次数 = 0;                                   // 最佳记录，0 表示"还没记过"  
 function 猜() {
   var 结果盒 = document.getElementById("结果");   // 开头就定好结果盒（挪到最前）
   var 输入值 = document.getElementById("guess").value;
@@ -365,11 +367,15 @@ function 猜() {
   次数 = 次数 + 1;
 
   if (猜的数字 > 秘密数字) {
-    结果盒.innerHTML = "⬆ 太大了！第" + 次数 + "次";
-  } else if (猜的数字 < 秘密数字) {
-    结果盒.innerHTML = "⬇ 太小了！第" + 次数 + "次";
-  } else {
+    结果盒.innerHTML = "⬆ 太大了！第" + 次数 + "次";} 
+  else if (猜的数字 < 秘密数字) {
+    结果盒.innerHTML = "⬇ 太小了！第" + 次数 + "次";} 
+  else {
     结果盒.innerHTML = "🎉 恭喜你，第" + 次数 + "次就猜对了！";
+  }
+   if (最少次数 === 0 || 次数 < 最少次数) {
+      最少次数 = 次数;
+      document.getElementById("最佳记录").innerHTML = "🏅 最佳记录：" + 最少次数 + " 次";
   }
 }
   function 重新开始() {
@@ -377,7 +383,7 @@ function 猜() {
   次数 = 0;                                        // 次数归零
   document.getElementById("结果").innerHTML = "";   // 清空结果文字
   document.getElementById("guess").value = "";      // 清空输入框
-}
+  }
 </script>
   </body>
 </html>

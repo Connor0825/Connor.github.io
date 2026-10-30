@@ -281,6 +281,7 @@
       <input id="guess" type="number" placeholder="输入你的猜测" />
       <button onclick="猜()">猜！</button>
       <p id="结果"></p>
+      <button onclick="重新开始()">🔄 再玩一次</button>
       </div>
 
       <!-- ⑥ 联系方式 -->
@@ -370,6 +371,12 @@ function 猜() {
   } else {
     结果盒.innerHTML = "🎉 恭喜你，第" + 次数 + "次就猜对了！";
   }
+}
+  function 重新开始() {
+  秘密数字 = Math.floor(Math.random() * 100) + 1;  // 重新藏一个数字
+  次数 = 0;                                        // 次数归零
+  document.getElementById("结果").innerHTML = "";   // 清空结果文字
+  document.getElementById("guess").value = "";      // 清空输入框
 }
 </script>
   </body>

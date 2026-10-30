@@ -348,7 +348,13 @@ function 弹成就() {
     //猜数字！！
   var 秘密数字 = Math.floor(Math.random() * 100) + 1; // 秘密数字，刷新时随机
   var 次数 = 0;   // 猜的次数，从0开始
-  var 最少次数 = 0;                                   // 最佳记录，0 表示"还没记过"  
+  var 最少次数 = 0;                                   // 最佳记录，0 表示"还没记过"
+    // 打开网页时，先看看抽屉里有没有历史存档
+  var 存档 = localStorage.getItem("最佳次数");
+  if (存档 !== null) {
+    最少次数 = Number(存档);
+    document.getElementById("最佳记录").innerHTML = "🏅 最佳记录：" + 最少次数 + " 次";
+  }  
 function 猜() {
   var 结果盒 = document.getElementById("结果");   // 开头就定好结果盒（挪到最前）
   var 输入值 = document.getElementById("guess").value;
@@ -376,6 +382,7 @@ function 猜() {
    if (最少次数 === 0 || 次数 < 最少次数) {
       最少次数 = 次数;
       document.getElementById("最佳记录").innerHTML = "🏅 最佳记录：" + 最少次数 + " 次";
+      localStorage.setItem("最佳次数", 最少次数);   // 存进抽屉
   }
 }
   function 重新开始() {
